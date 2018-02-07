@@ -1691,6 +1691,7 @@ header.new-header.header-modern .sticky-bar {
   box-shadow: none;
   position: static;
   background-color: #fff;
+  padding-bottom: 10px;
 }
 .stickyModeActive header.new-header.header-modern .sticky-bar {
   -webkit-box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.15);
