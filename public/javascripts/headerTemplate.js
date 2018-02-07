@@ -147,31 +147,6 @@ var headerTemplate = `<header class="main new-header header-modern resize-proces
         </div>
       </div>
     </div>
-    <div class="search-form-container panel-panel">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel-pane pane-block pane-dcs-search-search">
-              <div class="pane-content">
-                <div class="searchbox">
-                  <form action="/" method="post" id="dcs-search-searchbox" accept-charset="UTF-8">
-                    <div>
-                      <div class="form-item form-type-textfield form-item-searchboxip">
-                        <input placeholder="Search" class="form-control form-text search-box search-stuff form-text" type="text" id="edit-searchboxip" name="searchboxip" value="" size="15" maxlength="128">
-                      </div>
-                      <input class="form-submit search-submit form-submit" type="submit" id="edit-submit--2" name="op" value="Go">
-                      <input type="hidden" name="form_build_id" value="form-7ox5nUSxBxl1Yp7Te-94Z8ZdKkQl5N1yxS3SxzfUIoM">
-                      <input type="hidden" name="form_id" value="dcs_search_searchbox">
-                    </div>
-                  </form>
-                </div>  
-              </div>
-            </div>
-          <div id="search-close-btn" class="icon-close-thin show-desktop jquery-once-2-processed" style="display: none">Search</div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="commercial-buttons panel-panel" style="display: none">
     <div class="panel-pane pane-fieldable-panels-pane pane-current-1241 commercial-primary-cta pane-bundle-mini-cta">
       <div class="pane-content">
@@ -214,50 +189,122 @@ function insertCSS(url) {
   document.getElementsByTagName( "head" )[0].appendChild( link );
 } 
 
-function insertJS(url) {
+function insertJS(url, id) {
   var script = document.createElement("script");
   script.src = url;
-  script.id = "jquery";
+  if(id != null) {
+    script.id = id;
+  }
+  
 
   bodyTag.appendChild( script );
 }
 
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     document.getElementById("demo").innerHTML = this.responseText;
+
+function afterJqueryLoad() {
+  // Add all jquery code here
+
+  var menuToggle = function(context, $parentItems, $searchBox, $accessLinks) {
+    $(‘.header-modern .no-submenu .parent-item > a’, context).click(function(){
+      if( $(this).parent().hasClass(‘expand’) ){
+        $parentItems.not( “.expand” ).addClass(‘hide’);
+        $searchBox.addClass(‘hide’);
+        $accessLinks.addClass(‘hide’);
+      }
+      else if( !$(this).parent().hasClass(‘expand’) ){
+        $parentItems.removeClass(‘hide’);
+        $searchBox.removeClass(‘hide’);
+        $accessLinks.removeClass(‘hide’);
+      }
+    });
+  };
+
+  var attach = function (context, settings) {
+    var $menu_items = $(‘.primary-menu .parent-item:not(.no-submenu) .menuparent, .new-header .primary-menu .parent-item:not(.no-submenu) > a’, context),
+      expand_class = ‘expanded’;
+    var menuItemToggle = function (e) {
+      e.preventDefault();
+
+      var $this = $(this),
+      $parent_item = $this.parent(‘.parent-item’);
+
+      if ($(‘.new-header’).length) {
+        expand_class = ‘expand’;
+      }
+
+      $parent_item.siblings().removeClass(expand_class);
+      $parent_item.toggleClass(expand_class);
+
+      setTimeout(function () {
+        $(‘html, body’).animate({
+          scrollTop: $this.offset().top - stickyBarMobileHeight
+        }, 500);
+      }, 250);
+
+      return false;
+    };
+
+    if ($(‘.touch’).length) {
+      $menu_items.once(function () {
+        $(this).on(‘click’, menuItemToggle);
+      });
+    }
+
+    if ($(‘.no-touch’).length) {
+      enquire.register(mobile_and_tablet, {
+        match: function () {
+          $menu_items.once(function () {
+            $(this).on(‘click’, menuItemToggle);
+          });
+        }
+      });
+
+      enquire.register(desktop, {
+        match: function () {
+          $menu_items.off(‘click’);
+        }
+      });
     }
   };
-  xhttp.open("GET", "ajax_info.txt", true);
-  xhttp.send();
+
 }
 
 
 insertCSS("https://www.docusign.com/sites/default/files/advagg_css/css__9XO1Tr4TJdBSNbpjQMWVOoNQhweWEh79CCMJHUjaY0I__jIu6szWpvWX62-1N-yzHhuxfhRN9riLXBy8iSYhHo8w__g9DnhmAtW_rsVEsHs8nwciM7eP_y1UISNVa6-mdoIxk.css");
 insertCSS("https://www.docusign.com/sites/default/files/advagg_css/css__Oupz5n8qQ0o315IScov8NbGmkcJ1uprRapQ9RXNO8UY__05JIzqz5C9lL4lUQmm8CbCho6YGXc1yqPZ1cZPkzX4U__g9DnhmAtW_rsVEsHs8nwciM7eP_y1UISNVa6-mdoIxk.css");
 insertJS("https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js");
-insertJS("http://code.jquery.com/jquery-latest.min.js");
+insertJS("http://code.jquery.com/jquery-latest.min.js", "jquery");
+
+// Delete the old header for support.docusign.com
+if(document.getElementById("header")) {
+  var el = document.getElementById("header");
+  el.outerHTML = "";
+  delete el;
+}
+
+
 bodyTag.insertAdjacentHTML('afterbegin', headerTemplate);
 
-document.getElementById('jquery')
-   .addEventListener('load', function() {
-    var $=jQuery;
-    var $html = $('html'),
-       $menu_button = $('#hamburger'),
-          navClass = 'js-nav';
 
-    if ($menu_button.length) {
-     $menu_button.click( function(e) {
-      e.preventDefault();
-      if (!$html.hasClass(navClass)) {
-          $html.addClass(navClass);
-          $('.new-header .primary-menu .parent-item ').removeClass('expand');
-        } else {
-          $html.removeClass(navClass);
-        }
-     });
-   }
 
-   });
+
+var $html = document.getElementsByTagName('html')[0],
+   $menu_button = document.getElementById('hamburger'),
+      navClass = 'js-nav';
+
+if ($menu_button) {
+ $menu_button.addEventListener("click", function(e) {
+  e.preventDefault();
+  if (!$html.classList.contains(navClass)) {
+      $html.classList.add(navClass);
+      //$('.new-header .primary-menu .parent-item ').removeClass('expand');
+    } else {
+      $html.classList.remove(navClass);
+    }
+ });
+}
+
+document.getElementById('jquery').addEventListener('load', function() {
+  afterJqueryLoad();
+});
 
