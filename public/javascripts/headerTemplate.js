@@ -33,7 +33,6 @@ var headerTemplate = `<header class="main new-header header-modern resize-proces
         </div>
         <div id="hamburger" class="hamburger-new hide-desktop jquery-once-1-processed"><span></span><span></span><span></span><span></span></div>
         <div class="col-xs-12 navigation-bar">
-          <div id="search-button" class="search-button icon-search show-desktop jquery-once-2-processed" style="display: none">Search</div>
           <div class="commercial-buttons panel-panel">
             <div class="panel-pane pane-fieldable-panels-pane pane-current-1241 commercial-primary-cta pane-bundle-mini-cta">
               <div class="pane-content">
@@ -203,6 +202,8 @@ var headerTemplate = `<header class="main new-header header-modern resize-proces
   </nav>
 </header>`;
 
+var bodyTag = document.getElementsByTagName('body')[0];
+
 function insertCSS(url) {
   var link = document.createElement( "link" );
   link.href = url;
@@ -213,7 +214,15 @@ function insertCSS(url) {
   document.getElementsByTagName( "head" )[0].appendChild( link );
 } 
 
-var bodyTag = document.getElementsByTagName('body')[0];
+function insertJS(url) {
+  var script = document.createElement("script");
+  script.src = url;
+
+  bodyTag.appendChild( script );
+}
+
+
 insertCSS("https://www.docusign.com/sites/default/files/advagg_css/css__9XO1Tr4TJdBSNbpjQMWVOoNQhweWEh79CCMJHUjaY0I__jIu6szWpvWX62-1N-yzHhuxfhRN9riLXBy8iSYhHo8w__g9DnhmAtW_rsVEsHs8nwciM7eP_y1UISNVa6-mdoIxk.css");
 insertCSS("https://www.docusign.com/sites/default/files/advagg_css/css__Oupz5n8qQ0o315IScov8NbGmkcJ1uprRapQ9RXNO8UY__05JIzqz5C9lL4lUQmm8CbCho6YGXc1yqPZ1cZPkzX4U__g9DnhmAtW_rsVEsHs8nwciM7eP_y1UISNVa6-mdoIxk.css");
+insertJS("https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js");
 bodyTag.insertAdjacentHTML('afterbegin', headerTemplate);
