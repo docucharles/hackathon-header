@@ -234,8 +234,8 @@ function loadDoc() {
 }
 
 
-insertCSS("https://www.docusign.com/sites/default/files/advagg_css/css__9XO1Tr4TJdBSNbpjQMWVOoNQhweWEh79CCMJHUjaY0I__jIu6szWpvWX62-1N-yzHhuxfhRN9riLXBy8iSYhHo8w__g9DnhmAtW_rsVEsHs8nwciM7eP_y1UISNVa6-mdoIxk.css");
-insertCSS("https://www.docusign.com/sites/default/files/advagg_css/css__Oupz5n8qQ0o315IScov8NbGmkcJ1uprRapQ9RXNO8UY__05JIzqz5C9lL4lUQmm8CbCho6YGXc1yqPZ1cZPkzX4U__g9DnhmAtW_rsVEsHs8nwciM7eP_y1UISNVa6-mdoIxk.css");
+// insertCSS("https://www.docusign.com/sites/default/files/advagg_css/css__9XO1Tr4TJdBSNbpjQMWVOoNQhweWEh79CCMJHUjaY0I__jIu6szWpvWX62-1N-yzHhuxfhRN9riLXBy8iSYhHo8w__g9DnhmAtW_rsVEsHs8nwciM7eP_y1UISNVa6-mdoIxk.css");
+// insertCSS("https://www.docusign.com/sites/default/files/advagg_css/css__Oupz5n8qQ0o315IScov8NbGmkcJ1uprRapQ9RXNO8UY__05JIzqz5C9lL4lUQmm8CbCho6YGXc1yqPZ1cZPkzX4U__g9DnhmAtW_rsVEsHs8nwciM7eP_y1UISNVa6-mdoIxk.css");
 insertJS("https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js");
 insertJS("http://code.jquery.com/jquery-latest.min.js");
 bodyTag.insertAdjacentHTML('afterbegin', headerTemplate);
