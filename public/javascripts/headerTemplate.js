@@ -204,19 +204,20 @@ function insertJS(url, id) {
 function afterJqueryLoad() {
   // Add all jquery code here
 
-  
 
   $('.header-modern .no-submenu .parent-item > a').click(function(){
-    if( $(this).parent().hasClass('expand') ){
-      $parentItems.not( '.expand' ).addClass('hide');
-      $searchBox.addClass('hide');
-      $accessLinks.addClass('hide');
+    var $parentItems = $('.navigation-container .parent-item');
+
+    if ($(this).parent().hasClass('parent-item')) {
+      if ($(this).parent().hasClass('expand')) {
+        $parentItems.removeClass('expand').removeClass('hide');
+      } else {
+        $parentItems.removeClass('expand').addClass('hide');
+        $(this).parent().addClass('expand').removeClass('hide');
+      }
     }
-    else if( !$(this).parent().hasClass('expand') ){
-      $parentItems.removeClass('hide');
-      $searchBox.removeClass('hide');
-      $accessLinks.removeClass('hide');
-    }
+
+
   });
 
 }
