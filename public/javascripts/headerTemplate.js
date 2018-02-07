@@ -217,12 +217,47 @@ function insertCSS(url) {
 function insertJS(url) {
   var script = document.createElement("script");
   script.src = url;
+  script.id = "jquery";
 
   bodyTag.appendChild( script );
+}
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
 }
 
 
 insertCSS("https://www.docusign.com/sites/default/files/advagg_css/css__9XO1Tr4TJdBSNbpjQMWVOoNQhweWEh79CCMJHUjaY0I__jIu6szWpvWX62-1N-yzHhuxfhRN9riLXBy8iSYhHo8w__g9DnhmAtW_rsVEsHs8nwciM7eP_y1UISNVa6-mdoIxk.css");
 insertCSS("https://www.docusign.com/sites/default/files/advagg_css/css__Oupz5n8qQ0o315IScov8NbGmkcJ1uprRapQ9RXNO8UY__05JIzqz5C9lL4lUQmm8CbCho6YGXc1yqPZ1cZPkzX4U__g9DnhmAtW_rsVEsHs8nwciM7eP_y1UISNVa6-mdoIxk.css");
 insertJS("https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js");
+insertJS("http://code.jquery.com/jquery-latest.min.js");
 bodyTag.insertAdjacentHTML('afterbegin', headerTemplate);
+
+document.getElementById('jquery')
+   .addEventListener('load', function() {
+    var $=jQuery;
+    var $html = $('html'),
+       $menu_button = $('#hamburger'),
+          navClass = 'js-nav';
+
+    if ($menu_button.length) {
+     $menu_button.click( function(e) {
+      e.preventDefault();
+      if (!$html.hasClass(navClass)) {
+          $html.addClass(navClass);
+          $('.new-header .primary-menu .parent-item ').removeClass('expand');
+        } else {
+          $html.removeClass(navClass);
+        }
+     });
+   }
+
+   });
+
