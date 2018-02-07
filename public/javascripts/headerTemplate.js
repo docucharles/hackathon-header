@@ -204,68 +204,20 @@ function insertJS(url, id) {
 function afterJqueryLoad() {
   // Add all jquery code here
 
-  var menuToggle = function(context, $parentItems, $searchBox, $accessLinks) {
-    $(‘.header-modern .no-submenu .parent-item > a’, context).click(function(){
-      if( $(this).parent().hasClass(‘expand’) ){
-        $parentItems.not( “.expand” ).addClass(‘hide’);
-        $searchBox.addClass(‘hide’);
-        $accessLinks.addClass(‘hide’);
-      }
-      else if( !$(this).parent().hasClass(‘expand’) ){
-        $parentItems.removeClass(‘hide’);
-        $searchBox.removeClass(‘hide’);
-        $accessLinks.removeClass(‘hide’);
-      }
-    });
-  };
+  
 
-  var attach = function (context, settings) {
-    var $menu_items = $(‘.primary-menu .parent-item:not(.no-submenu) .menuparent, .new-header .primary-menu .parent-item:not(.no-submenu) > a’, context),
-      expand_class = ‘expanded’;
-    var menuItemToggle = function (e) {
-      e.preventDefault();
-
-      var $this = $(this),
-      $parent_item = $this.parent(‘.parent-item’);
-
-      if ($(‘.new-header’).length) {
-        expand_class = ‘expand’;
-      }
-
-      $parent_item.siblings().removeClass(expand_class);
-      $parent_item.toggleClass(expand_class);
-
-      setTimeout(function () {
-        $(‘html, body’).animate({
-          scrollTop: $this.offset().top - stickyBarMobileHeight
-        }, 500);
-      }, 250);
-
-      return false;
-    };
-
-    if ($(‘.touch’).length) {
-      $menu_items.once(function () {
-        $(this).on(‘click’, menuItemToggle);
-      });
+  $('.header-modern .no-submenu .parent-item > a').click(function(){
+    if( $(this).parent().hasClass('expand') ){
+      $parentItems.not( '.expand' ).addClass('hide');
+      $searchBox.addClass('hide');
+      $accessLinks.addClass('hide');
     }
-
-    if ($(‘.no-touch’).length) {
-      enquire.register(mobile_and_tablet, {
-        match: function () {
-          $menu_items.once(function () {
-            $(this).on(‘click’, menuItemToggle);
-          });
-        }
-      });
-
-      enquire.register(desktop, {
-        match: function () {
-          $menu_items.off(‘click’);
-        }
-      });
+    else if( !$(this).parent().hasClass('expand') ){
+      $parentItems.removeClass('hide');
+      $searchBox.removeClass('hide');
+      $accessLinks.removeClass('hide');
     }
-  };
+  });
 
 }
 
