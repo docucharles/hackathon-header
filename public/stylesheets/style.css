@@ -172,7 +172,7 @@
 #syndicated-header .touch select.hide-touch {
   display: none !important;
 }
-#syndicated-header div, #syndicated-header span, #syndicated-header applet, #syndicated-header object, #syndicated-header iframe, #syndicated-header h1, #syndicated-header h2, #syndicated-header h3, #syndicated-header h4, #syndicated-header h5, #syndicated-header h6, #syndicated-header p, #syndicated-header blockquote, #syndicated-header pre, #syndicated-header a, #syndicated-header abbr, #syndicated-header acronym, #syndicated-header address, #syndicated-header big, #syndicated-header cite, #syndicated-header code, #syndicated-header del, #syndicated-header dfn, #syndicated-header em, #syndicated-header img, #syndicated-header ins, #syndicated-header kbd, #syndicated-header q, #syndicated-header s, #syndicated-header samp, #syndicated-header small, #syndicated-header strike, #syndicated-header sub, #syndicated-header sup, #syndicated-header tt, #syndicated-header var, #syndicated-header b, #syndicated-header u, #syndicated-header i, #syndicated-header center, #syndicated-header dl, #syndicated-header dt, #syndicated-header dd, #syndicated-header ol, #syndicated-header ul, #syndicated-header li, #syndicated-header fieldset, #syndicated-header form, #syndicated-header label, #syndicated-header legend, #syndicated-header table, #syndicated-header caption, #syndicated-header tbody, #syndicated-header tfoot, #syndicated-header thead, #syndicated-header tr, #syndicated-header th, #syndicated-header td, #syndicated-header article, #syndicated-header aside, #syndicated-header canvas, #syndicated-header details, #syndicated-header embed, #syndicated-header figure, #syndicated-header figcaption, #syndicated-header footer, #syndicated-header header, #syndicated-header hgroup, #syndicated-header menu, #syndicated-header nav, #syndicated-header output, #syndicated-header ruby, #syndicated-header section, #syndicated-header summary, #syndicated-header time, #syndicated-header mark, #syndicated-header audio, #syndicated-header video {
+html, body, #syndicated-header div, #syndicated-header span, #syndicated-header applet, #syndicated-header object, #syndicated-header iframe, #syndicated-header h1, #syndicated-header h2, #syndicated-header h3, #syndicated-header h4, #syndicated-header h5, #syndicated-header h6, #syndicated-header p, #syndicated-header blockquote, #syndicated-header pre, #syndicated-header a, #syndicated-header abbr, #syndicated-header acronym, #syndicated-header address, #syndicated-header big, #syndicated-header cite, #syndicated-header code, #syndicated-header del, #syndicated-header dfn, #syndicated-header em, #syndicated-header img, #syndicated-header ins, #syndicated-header kbd, #syndicated-header q, #syndicated-header s, #syndicated-header samp, #syndicated-header small, #syndicated-header strike, #syndicated-header sub, #syndicated-header sup, #syndicated-header tt, #syndicated-header var, #syndicated-header b, #syndicated-header u, #syndicated-header i, #syndicated-header center, #syndicated-header dl, #syndicated-header dt, #syndicated-header dd, #syndicated-header ol, #syndicated-header ul, #syndicated-header li, #syndicated-header fieldset, #syndicated-header form, #syndicated-header label, #syndicated-header legend, #syndicated-header table, #syndicated-header caption, #syndicated-header tbody, #syndicated-header tfoot, #syndicated-header thead, #syndicated-header tr, #syndicated-header th, #syndicated-header td, #syndicated-header article, #syndicated-header aside, #syndicated-header canvas, #syndicated-header details, #syndicated-header embed, #syndicated-header figure, #syndicated-header figcaption, #syndicated-header footer, #syndicated-header header, #syndicated-header hgroup, #syndicated-header menu, #syndicated-header nav, #syndicated-header output, #syndicated-header ruby, #syndicated-header section, #syndicated-header summary, #syndicated-header time, #syndicated-header mark, #syndicated-header audio, #syndicated-header video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -185,11 +185,7 @@
   box-sizing: border-box;
   list-style-type: none;
 }
-html, body {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
+
 #syndicated-header .section-title {
   font-family: 'Maven Pro', sans-serif;
   font-weight: 400;
