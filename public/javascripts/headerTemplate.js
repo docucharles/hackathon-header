@@ -227,14 +227,18 @@ var SyndicatedHeader = (function() {
           console.log('header-here');
         });
         //hack support
+        var path = window.location.pathname;
+        var host = window.location.host;
       $('.home-topics').removeClass('row-eq-height-fix');
       $('.logo-link img, #logo_row img').css('opacity','0');
       $('.logo-link .logo-text').css('font-size','22px');
       $('.logo-link .logo-text').css('font-weight','bold'); 
       //trust no nav
-      $( '#syndicated-header .navigation-container').remove();  
-      $( '#syndicated-header').css('padding','0');    
-      var path = window.location.pathname;
+      if(host.indexOf("trust") > -1 ) {
+        $( '#syndicated-header .navigation-container').remove();  
+        $( '#syndicated-header').css('padding','0');    
+      }
+      
       if(path.indexOf("blog") > -1 ) {
         $( '#syndicated-header').css('position','absolute');    
         $( '#syndicated-header').css('width','100%');    
