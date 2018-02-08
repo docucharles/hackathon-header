@@ -217,20 +217,45 @@ var SyndicatedHeader = (function() {
         }
       }
 
-    });
 
+
+      });
+      $( '#syndicated-header').animate({
+          opacity: 1,
+        }, 1500, function() {
+          // Animation complete.
+          console.log('header-here');
+        });
+        //hack support
+        var path = window.location.pathname;
+        var host = window.location.host;
+      $('.home-topics').removeClass('row-eq-height-fix');
+      $('.logo-link img, #logo_row img').css('opacity','0');
+      $('.logo-link .logo-text').css('font-size','22px');
+      $('.logo-link .logo-text').css('font-weight','bold'); 
+      //trust no nav
+      if(host.indexOf("trust") > -1 ) {
+        $( '#syndicated-header .navigation-container').remove();  
+        $( '#syndicated-header').css('padding','0');    
+      }
+      
+      if(path.indexOf("blog") > -1 ) {
+        $( '#syndicated-header').css('position','absolute');    
+        $( '#syndicated-header').css('width','100%');    
+      }
   }
 
   function init() {
 
-    insertCSS("https://docucharles.github.io/hackathon-header/public/stylesheets/style.css");
+    insertCSS("https://docucharles.github.io/hackathon-header/public/stylesheets/style.css?12345");
     insertJS("https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js");
     insertJS("https://code.jquery.com/jquery-latest.min.js", "jquery");
 
     bodyTag.insertAdjacentHTML('afterbegin', headerTemplate);
     
     setTimeout(function(){ 
-      document.getElementById('syndicated-header').style.opacity = 1;
+      //document.getElementById('syndicated-header').style.opacity = 1;
+
     }, 100);
 
     $menu_button = document.getElementById('hamburger')
