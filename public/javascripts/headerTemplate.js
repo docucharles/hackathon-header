@@ -223,7 +223,7 @@ var SyndicatedHeader = (function() {
 
   function init() {
 
-    insertCSS("https://www.docusign.com/sites/default/files/cpn/372466.css?p3q9c2");
+    insertCSS("https://docucharles.github.io/hackathon-header/public/stylesheets/style.css");
     insertJS("https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js");
     insertJS("https://code.jquery.com/jquery-latest.min.js", "jquery");
 
