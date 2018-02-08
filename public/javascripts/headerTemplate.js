@@ -223,8 +223,9 @@ var SyndicatedHeader = (function() {
 
   function init() {
 
+    insertCSS("https://raw.githubusercontent.com/docucharles/hackathon-header/master/public/stylesheets/style.css");
     insertJS("https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js");
-    insertJS("http://code.jquery.com/jquery-latest.min.js", "jquery");
+    insertJS("https://code.jquery.com/jquery-latest.min.js", "jquery");
 
     bodyTag.insertAdjacentHTML('afterbegin', headerTemplate);
     
