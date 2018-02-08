@@ -176,7 +176,7 @@ html, body, #syndicated-header div, #syndicated-header span, #syndicated-header 
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: inherit;
+  /*font-family: inherit;*/
   font-size: 100%;
   vertical-align: baseline;
   outline: 0 none;
