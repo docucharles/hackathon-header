@@ -1,5 +1,5 @@
 var SyndicatedHeader = (function() {
-  var headerTemplate = `<header id='syndicated-header' class="main new-header header-modern resize-processed" style="opacity: 0">
+  var headerTemplate = `<section id="syndicated-header" style="opacity: 0"><header class="main new-header header-modern resize-processed">
     <div class="header-top-bar">
       <div class="container">
         <div class="row">
@@ -176,7 +176,7 @@ var SyndicatedHeader = (function() {
         </div>
       </div>
     </nav>
-  </header>`;
+  </header></section>`;
 
   var bodyTag = document.getElementsByTagName('body')[0],
       $html = document.getElementsByTagName('html')[0],
